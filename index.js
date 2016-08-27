@@ -1,26 +1,19 @@
 'use strict';
-var fs = require('fs');
-var R = require('ramda');
 
-function toSnake(string) {
-  if (typeof string !== 'string') return;
-  var joined = string.replace(/ /g, '-');
-  return R.map(function(el) {
-    return el.toLowerCase();
-  }, joined).join('');
-};
+const fs = require('fs');
+const toSnake = require('./to-snake');
 
-module.exports = (input, opts) => {
-	if (typeof input !== 'object') {
-		throw new TypeError(`Expected a string, got ${typeof input}`);
-	}
+module.exports = input => {
+  const title = toSnake(input.join(' '));
+  const file = title + '.md';
 
-  var inputMerged = input.join(' ');
-  var title = toSnake(inputMerged);
-  var file = title + '.md';
-  
-  var frontmatter = "---\r\ntitle: " + inputMerged + "\r\npath: /" + title + "\r\ndate: " + new Date(Date.now()) + "\r\n---";
-  return fs.writeFile(file, frontmatter, function(done) {
-    console.log('Created ' + file); 
+  const frontmatter = `---
+title: ${input.join(' ')}
+date: ${new Date(Date.now())}
+path: title
+---`;
+
+  return fs.writeFile(file, frontmatter, () => {
+    console.log('Created ' + file);
   });
 };

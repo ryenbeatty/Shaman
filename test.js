@@ -1,6 +1,7 @@
 import test from 'ava';
-import fn from './';
+import toSnake from './to-snake';
 
-test('title', t => {
-	t.is(fn('unicorns'), 'unicorns & rainbows');
+test('toSnake', t => {
+  const expected = 'my-cool-post';
+  t.is(toSnake('My Cool Post'), expected);
 });
