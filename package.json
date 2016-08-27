@@ -1,13 +1,13 @@
 {
   "name": "shaman",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "CLI helper to create markdown blog posts with pre-filled frontmatter",
   "license": "MIT",
-  "repository": "<%= githubUsername %>/<%= moduleName %>",
+  "repository": "ryenbeatty/Shaman",
   "author": {
-    "name": "<%= name %>",
-    "email": "<%= email %>",
-    "url": "<%= website %>"
+    "name": "Ryen Beatty",
+    "email": "ryen.beatty@gmail.com",
+    "url": "ryenbeatty.co"
   },
   "bin": {
     "shaman": "cli.js"
