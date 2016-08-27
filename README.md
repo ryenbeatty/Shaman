@@ -1,1 +1,1 @@
-![Shaman](./Shaman.svg)
+![Shaman](./Shaman.jpg)
