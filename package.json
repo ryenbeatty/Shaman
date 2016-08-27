@@ -9,7 +9,9 @@
     "email": "<%= email %>",
     "url": "<%= website %>"
   },
-  "bin": "cli.js",
+  "bin": {
+    "shaman": "cli.js"
+  },
   "engines": {
     "node": ">=4"
   },

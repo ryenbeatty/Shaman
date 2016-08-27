@@ -4,7 +4,7 @@ var R = require('ramda');
 
 function toSnake(string) {
   if (typeof string !== 'string') return;
-  var joined = string.replace(' ', '-');
+  var joined = string.replace(/ /g, '-');
   return R.map(function(el) {
     return el.toLowerCase();
   }, joined).join('');
@@ -17,9 +17,10 @@ module.exports = (input, opts) => {
 
   var inputMerged = input.join(' ');
   var title = toSnake(inputMerged);
-
-  var frontmatter = "---\r\ntitle: " + title + "\r\npath: /" + title + "\r\ndate: " + new Date(Date.now()) + "\r\n---";
-  return fs.writeFile(title + '.md', frontmatter, function(done) {
-    console.log('Done'); 
-  })
+  var file = title + '.md';
+  
+  var frontmatter = "---\r\ntitle: " + inputMerged + "\r\npath: /" + title + "\r\ndate: " + new Date(Date.now()) + "\r\n---";
+  return fs.writeFile(file, frontmatter, function(done) {
+    console.log('Created ' + file); 
+  });
 };
